@@ -1,0 +1,52 @@
+<div class="modal-header">
+    <h4 class="modal-title">Contact Section</h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="contactForm">
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" formControlName="email">
+        </div>
+        <div class="form-group">
+            <label for="phone">Phone</label>
+            <input type="text" class="form-control" id="phone" formControlName="phone">
+        </div>
+        <div class="form-group">
+            <label for="location">Location</label>
+            <input type="text" class="form-control" id="location" formControlName="location">
+        </div>
+        <div>
+            <h4>Social Media Links</h4>
+            <div class="form-row" formGroupName="socialMedia">
+                <div class="form-group col-md-6">
+                    <label for="twitter">Twitter</label>
+                    <input type="text" class="form-control" id="twitter" formControlName="twitter">
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="facebook">Facebook</label>
+                    <input type="text" class="form-control" id="facebook" formControlName="facebook">
+                  </div>
+                <div class="form-group col-md-6">
+                    <label for="instagram">Instagram</label>
+                    <input type="text" class="form-control" id="instagram" formControlName="instagram">
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="github">Github</label>
+                    <input type="text" class="form-control" id="github" formControlName="github">
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="linkedin">LinkedIn</label>
+                    <input type="text" class="form-control" id="linkedin" formControlName="linkedin">
+                  </div>
+            </div>
+        </div>
+      </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
+    <button type="button" class="btn btn-outline-dark" (click)="onSubmit()">Save</button>
+  </div>
+

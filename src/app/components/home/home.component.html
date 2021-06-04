@@ -1,0 +1,162 @@
+<nav id="home" class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">
+      <img src="assets/images/logo.png" width="40" height="40" alt="">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="#home">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#about">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#features">Features</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Contact</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <div class="row d-flex align-items-center">
+        <div class="col-lg-7" >
+          <h1 class="display-4">Build your personal portfolio with us.</h1>
+          <br>
+          <button type="button" class="btn btn-primary mr-4" (click)='displaySignIn()'>Sign In</button>
+          <button type="button" class="btn btn-primary">Browse Portfolios</button>  
+        </div>
+        <div class="col-lg-5">
+            <img *ngIf="!displaySignInCard; else loginCard" class="img img-fluid" src="assets/images/home_jumbotron.svg" alt="Portfolio">
+            <ng-template #loginCard>
+                <span *ngIf="!newUser">
+                    <h3 class="display-4">Login</h3>
+                    <hr>
+                    <form [formGroup]="loginForm" (ngSubmit)="onloginFormSubmit()">
+                        <div class="form-group row">
+                            <label for="username" class="col-sm-3 col-form-label">Username</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="username" formControlName="username">
+                                <small *ngIf="submitted && loginControls.username.errors && loginControls.username.errors.required" class="text-danger">Username is required</small>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="password" class="col-sm-3 col-form-label">Password</label>
+                            <div class="col-sm-9">
+                                <input type="password" class="form-control" id="password" formControlName="password">
+                                <small *ngIf="submitted && loginControls.password.errors && loginControls.password.errors.required" class="text-danger">Password is required</small>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <button class="btn btn-primary m-2" type="submit">Log In</button><br>
+                            <a role="button" (click)=toggleForm()>Do not have an account? Create one here</a>
+                        </div>
+                    </form>
+                </span>
+
+                <span *ngIf="newUser">
+                    <h3 class="display-4">Signup</h3>
+                    <hr>
+                    <form [formGroup]="signupForm" (ngSubmit)="onsignupFormSubmit()">
+                
+                        <div class="row">
+                            <div class="form-group col-6">
+                                <input type="text" class="form-control" id="firstname" formControlName="firstname" placeholder="First Name">
+                                <small *ngIf="submitted && signupControl.firstname.errors && signupControl.firstname.errors.required" class="text-danger">First name is required</small>
+                            </div>
+                        
+                            <div class="form-group col-6">
+                                <input type="text" class="form-control" id="lastname" formControlName="lastname" placeholder="Last Name">
+                                <small *ngIf="submitted && signupControl.lastname.errors && signupControl.lastname.errors.required" class="text-danger">Last name is required</small>
+                            </div>
+                        </div>
+        
+                        <div class="row">
+                            <div class="form-group col">
+                                <input type="email" class="form-control" id="email" formControlName="email" placeholder="Email">
+                                <small *ngIf="submitted && signupControl.email.errors && signupControl.email.errors.required" class="text-danger">Email is required</small>
+                                <small *ngIf="submitted && signupControl.email.errors && signupControl.email.errors.email" class="text-danger">Email must be a valid format</small>
+                            </div>
+                        </div>
+        
+                        <div class="form-group row">
+                            <div class="col-sm-9">
+                                <input type="password" class="form-control" id="password" formControlName="password" placeholder="Password">
+                                <small *ngIf="submitted && signupControl.password.errors && signupControl.password.errors.required" class="text-danger">Password is required.</small>
+                                <small *ngIf="submitted && signupControl.password.errors && signupControl.password.errors.minlength" class="text-danger">Password should be minimumum 6 characters long. </small>
+                            </div>
+                        </div>
+        
+                        <div class="form-group row">
+                            <div class="col-sm-9">
+                                <input type="password" class="form-control" id="confirmpassword" formControlName="confirmpassword" placeholder="Confirm Password">
+                                <small *ngIf="submitted && signupControl.confirmpassword.errors && signupControl.confirmpassword.errors.required" class="text-danger">Confirm password is required.</small>
+                                <small *ngIf="submitted && signupControl.confirmpassword.errors && signupControl.confirmpassword.errors.passwordsUnMatched" class="text-danger">Passwords donot match.</small>
+                            </div>
+                        </div>
+        
+                        <div class="text-center">
+                            <button class="btn btn-primary m-2" type="submit">Sign Up</button><br>
+                            <a role="button" (click)=toggleForm()>Already have an account? Login here</a>
+                        </div>
+                      </form>
+                </span>
+            </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container home-content">
+    <div class="row align-items-center">
+      <div class="col-4 align-items-center" >
+        <img src="assets/images/home_about.svg" class="img-fluid" alt="...">
+      </div>
+      <div class="col-7 offset-1">
+        <h1 id="about" class="display-3">About</h1>
+        <hr>
+        <p class="lead">
+          The portfolio generator is a platform where you can sign up and create your portfolios using interactive elements and tools.
+          The web portfolio will serve as an organized, visual collection of your skills, achievements, projects, and efforts that will demonstrate
+          your accomplishments. <br><br>
+          You can share your public portfolio link using which people can view your qualifications and projects,
+          also any services that you provide. The platform also provides the feature of contact cards which is
+          the web version of old days business cards.
+        </p>
+      </div>
+    </div>
+    
+    
+    <div class="row align-items-center">
+        <div class="col-8">
+          <h1 class="display-3" id="features">Features</h1>
+          <hr>
+          <div class="row">
+              <ul>
+                <li class="lead">Interactive platform</li>
+                <li class="lead">Huge pool of sections to include in portfolio</li>
+                <li class="lead">Contact cards</li>
+                <li class="lead">Free to use</li>
+              </ul>
+           
+          </div>
+        </div>
+      <div class="col-4 align-items-center" >
+        <img src="assets/images/home_features.svg" class="img-fluid" alt="...">
+      </div>
+    </div>
+
+  </div>
+
+<div class="footer-dark fixed-bottom">
+    <footer>
+        <div class="container">
+            <p class="copyright">Portfoliogenerator.tech © 2021</p>
+        </div>
+    </footer>
+</div>

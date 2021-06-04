@@ -1,0 +1,32 @@
+<div class="modal-header">
+    <h4 class="modal-title">Projects Section</h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+        <div class="row">   
+                <div class="card card-body col-8" *ngFor="let _ of projects.controls; index as i">
+                    <ng-container [formGroup]="getProject(i)">
+                        <div class="form-group row">
+                            <label for="title" class="col-3">Project Title</label>
+                            <input type="text" class="form-control col-9" formControlName="title" id="title">
+                        </div>
+                        <div class="form-group row">
+                            <label for="link" class="col-3">Project Link</label>
+                            <input type="text" class="form-control col-9" formControlName="link" id="link">
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Description(if any)</label>
+                            <textarea class="form-control" formControlName="description"  id="description" rows="2"></textarea>
+                        </div>
+                    </ng-container>
+                </div>
+        </div>
+                <button type="button" class="btn btn-primary" (click)="addProject()">Add Project</button>
+        
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark mr-3" (click)="activeModal.close('Close click')">Close</button>
+    <button type="button" class="btn btn-outline-dark" (click)="onSubmit()">Save</button>
+  </div>

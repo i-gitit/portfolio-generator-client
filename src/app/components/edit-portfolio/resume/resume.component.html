@@ -1,0 +1,78 @@
+<div class="modal-header">
+    <h4 class="modal-title">Resume Section</h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="resumeForm">
+        <div class="row">
+            <div class="col-6" formArrayName="education">
+                <h4>Education</h4>
+                <div class="card card-body" *ngFor="let _ of education.controls; index as i">
+                    <ng-container [formGroupName]="i">
+                        <div class="form-group">
+                            <label for="courseName">Course/Degree name</label>
+                            <input type="text" class="form-control" formControlName="courseName" id="courseName" placeholder="MASTER OF FINE ARTS & GRAPHIC DESIGN">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="courseStart">Course Start month</label>
+                                <input type="text" class="form-control" formControlName="courseStart" id="courseStart" placeholder="month,year">
+                              </div>
+                              <div class="form-group col-md-6">
+                                <label for="courseEnd">Course Finish month</label>
+                                <input type="text" class="form-control" formControlName="courseEnd" id="courseEnd" placeholder="month,year">
+                              </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="institute">Institute name</label>
+                            <input type="text" class="form-control" formControlName="institute" id="institute">
+                        </div>
+                        <div class="form-group">
+                            <label for="detail">Detail(if any)</label>
+                            <textarea class="form-control" formControlName="detail"  id="detail" rows="2"></textarea>
+                        </div>
+                    </ng-container>
+                </div>
+                <button type="button" class="btn btn-primary" (click)="addEducation()">Add Education</button>
+            </div>
+
+            <div class="col-6" formArrayName="experience">
+                <h4>Professional Experience</h4>
+                <div class="card card-body" *ngFor="let _ of experience.controls; index as i">
+                    <ng-container [formGroupName]="i">
+                        <div class="form-group">
+                            <label for="profile">Profile/post Name</label>
+                            <input type="text" class="form-control" formControlName="profile" id="profile" placeholder="SENIOR GRAPHIC DESIGN SPECIALIST">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="start">Joining month</label>
+                                <input type="text" class="form-control" formControlName="start" id="start" placeholder="month,year">
+                              </div>
+                              <div class="form-group col-md-6">
+                                <label for="end">Leaving month</label>
+                                <input type="text" class="form-control" formControlName="end" id="end" placeholder="month,year">
+                              </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="organisation">Organisation</label>
+                            <input type="text" class="form-control" formControlName="organisation" id="organisation">
+                        </div>
+                        <div class="form-group">
+                            <label for="detail">Detail(if any)</label>
+                            <textarea class="form-control" formControlName="detail" id="detail" rows="2"></textarea>
+                        </div>
+                    </ng-container>
+                </div>
+                <button type="button" class="btn btn-primary" (click)="addExperience()">Add Professional experience</button>
+            </div>
+        </div>
+        
+      </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark mr-3" (click)="activeModal.close('Close click')">Close</button>
+    <button type="button" class="btn btn-outline-dark" (click)="onSubmit()">Save</button>
+  </div>

@@ -1,0 +1,55 @@
+<div class="modal-header">
+    <h4 class="modal-title">About Section</h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="aboutForm">
+        <div class="form-group">
+            <label for="profile">Profile Tag</label>
+            <input type="text" class="form-control" id="profile" placeholder="UI/UX Designer & Web Developer." formControlName="profile">
+          </div>
+        <div>
+            <h4>Personal Information</h4>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="dob">Bate of Birth</label>
+                    <input type="date" class="form-control" id="dob" formControlName="dob">
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="city">City</label>
+                    <input type="text" class="form-control" id="city" placeholder="New York, USA" formControlName="city">
+                  </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="phone">Phone</label>
+                    <input type="text" class="form-control" id="phone" placeholder="+123 456 7890" formControlName="phone">
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" placeholder="email@example.com" formControlName="email">
+                  </div>
+            </div>
+            <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="degree">Degree</label>
+                    <input type="text" class="form-control" id="degree" placeholder="Masters" formControlName="degree">
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="freelance">Freelance</label>
+                    <input type="text" class="form-control" id="freelance" placeholder="Available" formControlName="freelance">
+                  </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="aboutSummary">About Summary</label>
+            <textarea class="form-control" id="aboutSummary" rows="3" formControlName="aboutSummary"></textarea>
+          </div>
+      </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
+    <button type="button" class="btn btn-outline-dark" (click)="onSubmit()">Save</button>
+  </div>

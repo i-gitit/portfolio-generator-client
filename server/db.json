@@ -1,0 +1,78 @@
+{
+  "portfolio": {
+    "username": "",
+    "sections": {
+      "About": false,
+      "Skills": false,
+      "Resume": true,
+      "Projects": true,
+      "Services": true,
+      "Contact": true
+    },
+    "About": {
+      "profile": "Web Developer",
+      "dob": "1999-07-04",
+      "city": "Jaipur, India",
+      "phone": "+919414643378",
+      "email": "himanshuathome@gmail.com",
+      "degree": "Batcherlors",
+      "freelance": "available",
+      "aboutSummary": "Enthusiastic"
+    },
+    "Skills": [
+      {
+        "skillName": "HTML",
+        "skillExpertise": "87"
+      }
+    ],
+    "Resume": {
+      "education": [
+        {
+          "courseName": "",
+          "courseStart": "",
+          "courseEnd": "",
+          "institute": "",
+          "detail": ""
+        }
+      ],
+      "experience": [
+        {
+          "profile": "",
+          "start": "",
+          "end": "",
+          "organisation": "",
+          "detail": ""
+        }
+      ]
+    },
+    "Projects": [
+      {
+        "title": "",
+        "description": "",
+        "link": ""
+      }
+    ],
+    "Services": [
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      }
+    ],
+    "Contact": {
+      "email": "himanshuathome@gmail.com",
+      "phone": "9899898878",
+      "location": "qqqqqqq",
+      "socialMedia": {
+        "twitter": "",
+        "facebook": "",
+        "instagram": "",
+        "github": "",
+        "linkedin": ""
+      }
+    }
+  }
+}
