@@ -9,29 +9,30 @@
         <div class="row">
             <div class="col-6" formArrayName="education">
                 <h4>Education</h4>
-                <div class="card card-body" *ngFor="let _ of education.controls; index as i">
+                <div class="card border-dark mb-3 card-body" *ngFor="let _ of education.controls; index as i">
                     <ng-container [formGroupName]="i">
+                        <a (click)="removeEducation(i)"><i class="bi bi-trash"></i></a>
                         <div class="form-group">
-                            <label for="courseName">Course/Degree name</label>
-                            <input type="text" class="form-control" formControlName="courseName" id="courseName" placeholder="MASTER OF FINE ARTS & GRAPHIC DESIGN">
+                            <!-- <label for="courseName">Course/Degree name</label> -->
+                            <input type="text" class="form-control" formControlName="courseName" id="courseName" placeholder="Course/Degree name">
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label for="courseStart">Course Start month</label>
-                                <input type="text" class="form-control" formControlName="courseStart" id="courseStart" placeholder="month,year">
+                                <!-- <label for="courseStart">Course Start month</label> -->
+                                <input type="text" class="form-control" formControlName="courseStart" id="courseStart" placeholder="Starting month, year">
                               </div>
                               <div class="form-group col-md-6">
-                                <label for="courseEnd">Course Finish month</label>
-                                <input type="text" class="form-control" formControlName="courseEnd" id="courseEnd" placeholder="month,year">
+                                <!-- <label for="courseEnd">Course Finish month</label> -->
+                                <input type="text" class="form-control" formControlName="courseEnd" id="courseEnd" placeholder="Finishing month,year">
                               </div>
                         </div>
                         <div class="form-group">
-                            <label for="institute">Institute name</label>
-                            <input type="text" class="form-control" formControlName="institute" id="institute">
+                            <!-- <label for="institute">Institute name</label> -->
+                            <input type="text" class="form-control" formControlName="institute" id="institute" placeholder="Institute name">
                         </div>
                         <div class="form-group">
-                            <label for="detail">Detail(if any)</label>
-                            <textarea class="form-control" formControlName="detail"  id="detail" rows="2"></textarea>
+                            <!-- <label for="detail">Detail(if any)</label> -->
+                            <textarea class="form-control" formControlName="detail"  id="detail" rows="2" placeholder="Details(if any)"></textarea>
                         </div>
                     </ng-container>
                 </div>
@@ -40,29 +41,30 @@
 
             <div class="col-6" formArrayName="experience">
                 <h4>Professional Experience</h4>
-                <div class="card card-body" *ngFor="let _ of experience.controls; index as i">
+                <div class="card border-dark mb-3 card-body" *ngFor="let _ of experience.controls; index as i">
                     <ng-container [formGroupName]="i">
+                        <a (click)="removeExperience(i)"><i class="bi bi-trash"></i></a>
                         <div class="form-group">
-                            <label for="profile">Profile/post Name</label>
-                            <input type="text" class="form-control" formControlName="profile" id="profile" placeholder="SENIOR GRAPHIC DESIGN SPECIALIST">
+                            <!-- <label for="profile">Profile/post Name</label> -->
+                            <input type="text" class="form-control" formControlName="profile" id="profile" placeholder="Profile/post Name">
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label for="start">Joining month</label>
-                                <input type="text" class="form-control" formControlName="start" id="start" placeholder="month,year">
+                                <!-- <label for="start">Joining month</label> -->
+                                <input type="text" class="form-control" formControlName="start" id="start" placeholder="Joining month & year">
                               </div>
                               <div class="form-group col-md-6">
-                                <label for="end">Leaving month</label>
-                                <input type="text" class="form-control" formControlName="end" id="end" placeholder="month,year">
+                                <!-- <label for="end">Leaving month</label> -->
+                                <input type="text" class="form-control" formControlName="end" id="end" placeholder="Laeving month & year">
                               </div>
                         </div>
                         <div class="form-group">
-                            <label for="organisation">Organisation</label>
-                            <input type="text" class="form-control" formControlName="organisation" id="organisation">
+                            <!-- <label for="organisation">Organisation</label> -->
+                            <input type="text" class="form-control" formControlName="organisation" id="organisation" placeholder="Organisation">
                         </div>
                         <div class="form-group">
-                            <label for="detail">Detail(if any)</label>
-                            <textarea class="form-control" formControlName="detail" id="detail" rows="2"></textarea>
+                            <!-- <label for="detail">Detail(if any)</label> -->
+                            <textarea class="form-control" formControlName="detail" id="detail" rows="2" placeholder="Detail(if any)"></textarea>
                         </div>
                     </ng-container>
                 </div>

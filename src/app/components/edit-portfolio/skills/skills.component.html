@@ -5,7 +5,19 @@
     </button>
   </div>
   <div class="modal-body">
-    <form>
+    <div class="input-group mb-3" *ngFor="let skill of skills.controls; index as i">
+      <ng-container [formGroup]="getSkill(i)">
+        <input type="text" aria-label="Skill Name" class="form-control" placeholder="Skill Name" formControlName="skillName">
+        <input type="text" aria-label="Skill Expertise" class="form-control" placeholder="Skill Expertise" formControlName="skillExpertise">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary" (click)="removeSkill(i)" type="button"><i class="bi bi-trash"></i></button>
+        </div>
+      </ng-container>
+    </div>
+    <div class="form-row">
+      <button type="button" class="btn btn-primary float-right" (click)="addSkill()">Add skill</button>
+    </div>
+    <!-- <form>
         <div class="form-row">
             <div class="col-md-6">
                 <label for="skillName">Skill Name</label>
@@ -33,7 +45,7 @@
                 <button type="button" class="btn btn-primary" (click)="addSkill()">Add skill</button>
             </div>
 
-      </form>
+      </form> -->
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-outline-dark mr-3" (click)="activeModal.close('Close click')">Close</button>

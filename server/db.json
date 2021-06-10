@@ -1,9 +1,9 @@
 {
   "portfolio": {
-    "username": "",
+    "url": "",
     "sections": {
-      "About": false,
-      "Skills": false,
+      "About": true,
+      "Skills": true,
       "Resume": true,
       "Projects": true,
       "Services": true,
@@ -17,22 +17,26 @@
       "email": "himanshuathome@gmail.com",
       "degree": "Batcherlors",
       "freelance": "available",
-      "aboutSummary": "Enthusiastic"
+      "aboutSummary": "Officiis eligendi itaque labore et dolorum mollitia officiis optio vero. Quisquam sunt adipisci omnis et ut. Nulla accusantium dolor incidunt officia tempore. Et eius omnis. Cupiditate ut dicta maxime officiis quidem quia. Sed et consectetur qui quia repellendus itaque neque. Aliquid amet quidem ut quaerat cupiditate. Ab et eum qui repellendus omnis culpa magni laudantium dolores."
     },
     "Skills": [
       {
         "skillName": "HTML",
+        "skillExpertise": "87"
+      },
+      {
+        "skillName": "CSS",
         "skillExpertise": "87"
       }
     ],
     "Resume": {
       "education": [
         {
-          "courseName": "",
-          "courseStart": "",
-          "courseEnd": "",
-          "institute": "",
-          "detail": ""
+          "courseName": "Btech",
+          "courseStart": "2017",
+          "courseEnd": "2021",
+          "institute": "Skit",
+          "detail": "Qui deserunt veniam. Et sed aliquam labore tempore sed quisquam iusto autem sit. Ea vero voluptatum qui ut dignissimos deleniti nerada porti sand markend"
         }
       ],
       "experience": [
@@ -47,19 +51,19 @@
     },
     "Projects": [
       {
-        "title": "",
-        "description": "",
-        "link": ""
+        "title": "Facebook",
+        "description": "flana flana",
+        "link": "https://www.facebook.com"
       }
     ],
     "Services": [
       {
-        "title": "",
-        "description": ""
+        "title": "Web Development",
+        "description": "If the idea of selling online attracts you, we are here to transform it from a dream into a digital reality. If you want to sell fashion apparel, books, games or even a mixed variety of products, we can help you in getting flexible and flourishing online stores. Whether you want to turn your existing site mobile friendly or wish to have a brand new e-commerce site, we provide best e-commerce solutions to meet your needs. We adorn e-commerce sites with all user friendly features such as shopping cart, product catalog, content management system, payment gateway integration, order processing etc."
       },
       {
-        "title": "",
-        "description": ""
+        "title": "Chat Bots",
+        "description": "If you think your website is dull and ugly or it is lacking compatibility to various devices, we can turn it into dynamic and attractive to web visitors as well as search engines. Whether you are looking for complete makeover or trivial changes to make your existing website prolific, our web developers implement the best techniques to improve and enhance your online portals"
       }
     ],
     "Contact": {

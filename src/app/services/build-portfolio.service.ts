@@ -14,16 +14,27 @@ export class BuildPortfolioService {
   private sectionsSubject: BehaviorSubject<any>;
   public sections: Observable<any>;
 
+  private urlSubject: BehaviorSubject<any>;
+  public url: Observable<any>;
+
   constructor(private http: HttpClient) {
       this.sectionsSubject = new BehaviorSubject({});
-      this.sections = this.sectionsSubject.asObservable()
+      this.sections = this.sectionsSubject.asObservable();
+      this.urlSubject = new BehaviorSubject("");
+      this.url = this.urlSubject.asObservable();
    }
 
   getPortfolio(){
+    console.log("inside service");
     this.http.get<Portfolio>(`${environment.apiUrl}/portfolio`)
     .subscribe((portfolio: Portfolio)=>{
+      console.log("here",portfolio)
       this.portfolio = portfolio;
       this.sectionsSubject.next(portfolio.sections);
+      this.urlSubject.next(portfolio.url);
+    },
+    (error)=>{
+      console.log(error);
     })
   }
 
@@ -57,15 +68,16 @@ export class BuildPortfolioService {
   }
 
   updatePortfolio(){
-    this.http.patch<Portfolio>(`${environment.apiUrl}/portfolio`,this.portfolio)
-    .subscribe(
-      (portfolio)=>{
-        this.portfolio=portfolio;
-        console.log(portfolio);
-      },
-      (error)=>{
-        console.log(error);
-      }
-    )
+    return this.http.put<Portfolio>(`${environment.apiUrl}/portfolio`,this.portfolio)
+            
   }
+
+  updateUrl(url:string){
+    return this.http.post(`${environment.apiUrl}/updateurl`,{url})
+    .pipe(map(success => {
+      this.urlSubject.next(url);
+      return success;
+  }));
+  }
+  
 }

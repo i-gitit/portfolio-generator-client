@@ -21,15 +21,15 @@ export class AuthenticationService {
       this.currentUserSubject = new BehaviorSubject<User | null>(JSON.parse(localUser));
     else
       this.currentUserSubject = new BehaviorSubject<User | null>(null);
-      this.currentUser = this.currentUserSubject.asObservable();
+    this.currentUser = this.currentUserSubject.asObservable();
    }
    
    public get currentUserValue(): User | null {
     return this.currentUserSubject.value;
   }
 
-  login(username:string, password:string) {
-    return this.http.post<any>(`${environment.apiUrl}/users/authenticate`, { username, password })
+  login(email:string, password:string) {
+    return this.http.post<any>(`${environment.apiUrl}/signin`, { email, password })
         .pipe(map(user => {
             localStorage.setItem('currentUser', JSON.stringify(user));
             this.currentUserSubject.next(user);
@@ -40,6 +40,6 @@ export class AuthenticationService {
   logout() {
       localStorage.removeItem('currentUser');
       this.currentUserSubject.next(null);
-      // this.router.navigate(['/login'])
+      this.router.navigate(['/home']);
   }
 }

@@ -1,0 +1,35 @@
+<div class="row parent" *ngIf='user'>
+   
+    <div class="col-4 offset-2" style="margin-top: 40px;">
+        <div class="card text-white card-has-bg click-col" 
+            style="background-image:url('');">
+            <img class="card-img d-none" src="" alt="Goverment Lorem Ipsum Sit Amet Consectetur dipisi?">
+            <div class="card-img-overlay d-flex flex-column">
+                <div class="card-body" style="padding-top: 50px;">
+                    <h4 class="card-title mt-0 "><a class="text-white">Welcome {{user.firstname}}</a></h4>
+                    <hr style="background-color: white;">
+                    
+                    <div *ngIf="user.url == ''" style="margin-top: 30px; z-index: 9;">
+                        <i class="bi bi-info-circle"></i> Seems like you are new here. Go to Portfolio section and update your portfolio.
+                        <button routerLink="editportfolio" type="button" class="btn btn-light mt-4">Edit Portfolio <i class="bi bi-pencil-fill ml-2" ></i></button>
+                    </div>
+                    
+                    <div *ngIf="user.url !== ''" style="margin-top: 30px; z-index: 9;">
+                        <i class="bi bi-info-circle"></i> Find your portfolio at below url.
+                        <div class="input-group mb-3" >
+                            <input #link type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" 
+                            aria-describedby="button-addon2" style="background: none; color:white; border:white 1px solid"
+                            [value]='createLink()'>
+                            <div class="input-group-append">
+                              <button class="btn btn-outline-secondary" type="button" id="button-addon2" style="background: none; color:white; border:white 1px solid"><i class="bi bi-clipboard-plus"></i></button>
+                            </div>
+                          </div>
+                        <a type="button" [href] = "createLink()" target="_blank" class="btn btn-light mt-4" >View Portfolio <i class="bi bi-eyeglasses ml-2"></i></a>
+                    </div>
+                    
+                    <img class="img-fluid" src="assets/images/tree.svg" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

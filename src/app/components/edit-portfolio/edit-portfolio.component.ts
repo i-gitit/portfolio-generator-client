@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { FormControl,Validators } from '@angular/forms';
+import { ToastService } from '../../services/toast.service';
+
 import { BuildPortfolioService } from '../../services/build-portfolio.service';
 import { AboutComponent } from './about/about.component';
 import { SkillsComponent } from './skills/skills.component';
@@ -7,6 +10,7 @@ import { ResumeComponent } from './resume/resume.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { ServicesComponent } from './services/services.component';
 import { ContactComponent } from './contact/contact.component';
+
 @Component({
   selector: 'app-edit-portfolio',
   templateUrl: './edit-portfolio.component.html',
@@ -22,6 +26,9 @@ export class EditPortfolioComponent implements OnInit {
     "Services":false,
     "Contact":false
   }
+  url = new FormControl('',Validators.required);
+
+  loading:boolean= false;
   sectionKeys = [ "About",
                   "Skills",
                   "Resume",
@@ -30,14 +37,36 @@ export class EditPortfolioComponent implements OnInit {
                   "Contact"]
 
   constructor(private modalService: NgbModal,
-              private bp: BuildPortfolioService) { }
+              private bp: BuildPortfolioService,
+              public toastService: ToastService) { }
 
   ngOnInit(): void {
     this.bp.getPortfolio();
     this.bp.sections.subscribe((sections)=>{
       this.sections=sections;
+    });
+    this.bp.url.subscribe((url)=>{
+      this.url.setValue(url);
+    })
+  }
+
+  updateUrl(){
+    console.log(this.url);
+    if(this.url.value == ""){
+       return;
     }
-    )
+    this.loading = true;
+    this.bp.updateUrl(this.url.value)
+    .subscribe((success)=>{
+      console.log(success);
+      this.loading=false;
+      this.toastService.show('Url successfully updated', { classname: 'bg-success text-light', delay: 5000 });
+    },
+    (error)=>{
+      console.log(error);
+      this.loading=false;
+      this.toastService.show("Url was not updated", { classname: 'bg-danger text-light', delay: 5000 });
+    })
   }
 
   removeSection(key:string){
@@ -45,7 +74,20 @@ export class EditPortfolioComponent implements OnInit {
   }
 
   updatePortfolio(){
-    this.bp.updatePortfolio();
+    this.loading=true;
+    this.bp.updatePortfolio()
+    .subscribe(
+      (body)=>{
+        console.log(body);
+        this.loading=false;
+        this.toastService.show('Portfolio successfully updated', { classname: 'bg-success text-light', delay: 5000 });
+      },
+      (error)=>{
+        console.log(error);
+        this.loading=false;
+        this.toastService.show("Portfolio was not updated", { classname: 'bg-danger text-light', delay: 5000 });
+      }
+    )
   }
 
   openSectionEditor(section:string) {

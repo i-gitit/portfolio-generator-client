@@ -5,6 +5,7 @@
                 <span></span>
           </a>
         </div>
+        
         <div class="side-inner">
           <div class="logo-wrap">
             <div class="logo">
@@ -12,27 +13,20 @@
             </div>
             <span class="logo-text">Portfolio Gen</span>
           </div>
-          <!-- <div class="search-form">
-            <form action="#">
-              <span class="wrap-icon">
-                <span class="icon-search2"></span>
-              </span>
-              <input type="text" class="form-control" placeholder="Search...">
-            </form>
-          </div> -->
+
           <div class="nav-menu">
             <ul>
-              <li><a href="#" class="d-flex align-items-center"><span class="wrap-icon icon-home mr-3"></span><span class="menu-text">Home &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></a></li>
+              <li><a routerLink="" class="d-flex align-items-center"><span class="wrap-icon icon-home mr-3"></span><span class="menu-text">Home &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></a></li>
               <li><a routerLink="editportfolio" class="d-flex align-items-center"><span class="wrap-icon icon-user-circle mr-3"></span><span class="menu-text">Portfolio &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></a></li>
               <li><a href="#" class="d-flex align-items-center"><span class="wrap-icon icon-vcard-o mr-3"></span><span class="menu-text">Contact card</span></a></li>
-              <li><a href="#" class="d-flex align-items-center"><span class="wrap-icon icon-cog mr-3"></span><span class="menu-text">Account Settings</span></a></li>
-              <li><a href="#" class="d-flex align-items-center"><span class="wrap-icon icon-sign-out mr-3"></span><span class="menu-text">Sign Out</span></a></li>
+              <li><a routerLink="accountsettings" class="d-flex align-items-center"><span class="wrap-icon icon-cog mr-3"></span><span class="menu-text">Account Settings</span></a></li>
+              <li><a (click)="userLogout()" class="d-flex align-items-center"><span class="wrap-icon icon-sign-out mr-3"></span><span class="menu-text">Sign Out</span></a></li>
             </ul>
           </div>
         </div> 
       </aside>
 </div>
 
-<div class="container">
+<div class="container-fluid">
     <router-outlet></router-outlet>
 </div>

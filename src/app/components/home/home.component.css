@@ -12,5 +12,30 @@
   }
 
 .home-content{
+    margin-top: 56px;
     margin-bottom: 70px;
+}
+
+.navbar .nav-link{
+  color: white;
+}
+
+.navbar-brand{
+  background-color: rgb(178, 218, 208);
+  border-radius: 50%;
+  padding: 3px;
+}
+
+.jumbotron{
+  margin-top: 56px;
+  background-color:   #c6ddee;
+}
+
+.navbar-toggler-icon{
+  color:white;
+}
+
+button{
+  background-color: rgb(49, 51, 184);
+  color: white;
 }

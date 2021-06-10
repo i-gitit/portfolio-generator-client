@@ -6,21 +6,26 @@
   </div>
   <div class="modal-body">
         <div class="row">   
-                <div class="card card-body col-8" *ngFor="let _ of projects.controls; index as i">
-                    <ng-container [formGroup]="getProject(i)">
-                        <div class="form-group row">
-                            <label for="title" class="col-3">Project Title</label>
-                            <input type="text" class="form-control col-9" formControlName="title" id="title">
-                        </div>
-                        <div class="form-group row">
-                            <label for="link" class="col-3">Project Link</label>
-                            <input type="text" class="form-control col-9" formControlName="link" id="link">
-                        </div>
-                        <div class="form-group">
-                            <label for="description">Description(if any)</label>
-                            <textarea class="form-control" formControlName="description"  id="description" rows="2"></textarea>
-                        </div>
-                    </ng-container>
+                <div class="col">
+                    <div class="card border-dark mb-3 " *ngFor="let _ of projects.controls; index as i">
+                        <ng-container [formGroup]="getProject(i)">
+                            <div class="card-header"> {{title.value}} <a class="float-right" (click)="removeProject(i)"><i class="bi bi-trash"></i></a></div>
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <!-- <label for="title" class="col-3">Project Title</label> -->
+                                    <input type="text" #title class="form-control" formControlName="title" id="title" placeholder="Project Title">
+                                </div>
+                                <div class="form-group">
+                                    <!-- <label for="link" class="col-3">Project Link</label> -->
+                                    <input type="text" class="form-control" formControlName="link" id="link" placeholder="Project Link">
+                                </div>
+                                <div class="form-group">
+                                    <!-- <label for="description">Description(if any)</label> -->
+                                    <textarea class="form-control" formControlName="description"  id="description" rows="2" placeholder="Description"></textarea>
+                                </div>
+                            </div>
+                        </ng-container>
+                    </div>
                 </div>
         </div>
                 <button type="button" class="btn btn-primary" (click)="addProject()">Add Project</button>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { AuthenticationService } from '../../services/authentication.service';
 @Component({
   selector: 'app-user-dashboard',
   templateUrl: './user-dashboard.component.html',
@@ -10,7 +10,7 @@ export class UserDashboardComponent implements OnInit {
   sidebarclass: string = "dashboard";
   toggleButtonClass: string = "burger js-menu-toggle";
 
-  constructor() { }
+  constructor(private authService: AuthenticationService) { }
   ngOnInit(): void {
   }
 
@@ -23,6 +23,10 @@ export class UserDashboardComponent implements OnInit {
       this.sidebarclass="dashboard";
       this.toggleButtonClass = "burger js-menu-toggle";
     }
+  }
+
+  userLogout(){
+    this.authService.logout();
   }
 
 }

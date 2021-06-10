@@ -5,12 +5,14 @@ import { AuthenticationService } from '../../services/authentication.service';
 import { first } from 'rxjs/operators';
 import { UserService } from '../../services/user.service';
 import { AlertService } from '../../services/alert.service';
+import { ToastService } from '../../services/toast.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
+
 export class HomeComponent implements OnInit {
 
   displaySignInCard: boolean = false;
@@ -19,13 +21,15 @@ export class HomeComponent implements OnInit {
   loginForm : FormGroup = this.formBuilder.group({});
   signupForm : FormGroup = this.formBuilder.group({});
   returnUrl: string = '/';
+  loading = false;
 
   constructor(private formBuilder: FormBuilder, 
               private router: Router,
               private route: ActivatedRoute,
               private authenticationService: AuthenticationService,
               private userService: UserService,
-              private alertService: AlertService) {
+              private alertService: AlertService,
+              public toastService: ToastService) {
 
     if (this.authenticationService.currentUserValue) {
       this.router.navigate(['/']);
@@ -34,7 +38,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(){
     this.loginForm = this.formBuilder.group({
-      username: ['',[Validators.required]],
+      email: ['',[Validators.required]],
       password: ['',Validators.required]
     },{});
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
@@ -69,18 +73,21 @@ export class HomeComponent implements OnInit {
     if (this.signupForm.invalid) {
       return;
     }
+    this.loading=true;
     var newUser = this.signupForm.value;
     delete newUser['confirmpassword'];
     console.log(JSON.stringify(this.signupForm.value));
     this.userService.register(newUser)
-      .pipe(first())
       .subscribe(
           data => {
-              this.alertService.success('Registration successful', true);
+              this.loading=false;
+              this.toastService.show('User successfully registered', { classname: 'bg-success text-light', delay: 5000 });
               this.toggleForm();
           },
           error => {
-            this.alertService.error(error);
+            console.log(error);
+            this.toastService.show(error.message, { classname: 'bg-danger text-light', delay: 5000 });
+            this.loading=false;
           });
   }
 
@@ -93,14 +100,18 @@ export class HomeComponent implements OnInit {
     if (this.loginForm.invalid) {
       return;
     }
-    this.authenticationService.login(this.loginControls.username.value, this.loginControls.password.value)
+    this.loading=true;
+    this.authenticationService.login(this.loginControls.email.value, this.loginControls.password.value)
         .pipe(first())
         .subscribe(
             data => {
+                this.toastService.show('User logged in.', { classname: 'bg-success text-light', delay: 5000 });
                 this.router.navigate([this.returnUrl]);
+                this.loading=false;
             },
             error => {
-                alert(error);
+                this.toastService.show(error.message, { classname: 'bg-danger text-light', delay: 5000 });
+                this.loading=false;
             });
   }
   
