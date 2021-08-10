@@ -1,27 +1,29 @@
-# PortfolioGenerator
+<div align="center">
+<h1>Portfolio Generator</h1>
+</div>
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.5.
+## About
+A web application that allows users to create their portfolio on web using interactive tools and forms. Users create an account and then create their portfolio by choosing sections to be included and filling details. The portfolio can be viewed using a unique public URL created. Users can also create their contact card.
 
-## Development server
+<!-- ## Website -->
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
+## Made with
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+* [Angular](https://angular.io/)
+* [Bootstrap](https://getbootstrap.com/docs/4.6/getting-started/introduction/)
 
-## Build
+## Backend
+The backend of this application is made using [NodeJS](https://nodejs.org/en/) and [ExpressJS](https://expressjs.com/). The backend repository can be found [here](https://github.com/isnam01/portfoliogenerator).
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Preview
+### Landing Page
+![Test Image](previewImages/screenshot%20landingpage.png)
+### User Dashboard
+![Test Image](previewImages/screenshot%20dashboardhome.png)
+### Edit portfolio section
+![Test Image](previewImages/screenshot%20editportfolio.png)
+### Generated portfolio page
+![Test Image](previewImages/screenshot%20portfolio.png)
+### Generated Contact Card
+![Test Image](previewImages/screenshot%20contact.png)
