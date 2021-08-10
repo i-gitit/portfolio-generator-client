@@ -9,7 +9,7 @@
           <li *ngIf="portfolio.sections['Services']"><a pageScroll [pageScrollDuration]="400" href="#services"><i class="bx bx-server"></i> <span>Services</span></a></li>
           <li *ngIf="portfolio.sections['Contact']"><a pageScroll [pageScrollDuration]="400" href="#contact"><i class="bx bx-envelope"></i> <span>Contact</span></a></li>
         </ul>
-      </nav><!-- .nav-menu -->
+      </nav><!-- nav-menu -->
   
     </header><!-- End Header -->
   
@@ -41,7 +41,7 @@
   
           <div class="row">
             <div class="col-lg-4">
-              <img src="assets/images/himanshu.jpg" class="img-fluid" alt="">
+              <img [src]='portfolio.profileImage' class="img-fluid" alt="">
             </div>
             <div class="col-lg-8 pt-4 pt-lg-0 content align-self-center">
               <h3>{{portfolio.About.profile}}</h3>
@@ -147,7 +147,7 @@
   
           <div class="section-title">
             <h2>Resume</h2>
-            <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+            <!-- <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p> -->
           </div>
   
           <div class="row">

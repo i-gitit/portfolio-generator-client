@@ -1,31 +1,48 @@
 <div class="row">
-    <div class="offset-md-2 col-md-8">
+    <div class="offset-md-2 col-md-9">
         <h4 class="display-4" style="margin-top: 30px;"><small class="text-muted">Design Portfolio</small></h4>
         <hr>
-        <form>
-            <div class="form-group row">
-                <label for="urltoken" class="col-sm-2">Your portfolio URL</label>
-                <div class="col-sm-7">
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon3">https://localhost.com/portfolio/</span>
+        
+            <div class="row align-items-center">
+                <div class="col-9">
+                    <div class="row">
+                        <label for="urltoken" class="col-sm-2">Your portfolio URL</label>
+                        <div class="col-sm-7">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon3">https://localhost.com/portfolio/</span>
+                                </div>
+                                <input type="text" [formControl]="url"  class="form-control" id="url" aria-describedby="basic-addon3"> 
+                            </div>
+                            <div *ngIf="url.invalid && (url.dirty || url.touched)" style="color: red;">
+                                <small *ngIf="url.errors?.required">
+                                    URL is required.
+                                </small>
+                            </div>
+                            <small>Your portfolio will be publically visible at above URL</small>
                         </div>
-                        <input type="text" [formControl]="url"  class="form-control" id="url" aria-describedby="basic-addon3"> 
+                        <div class="col-sm-3">
+                            <button  [disabled]="loading" class="btn btn-primary mb-2" (click)='updateUrl()'>
+                                <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>Update Url
+                            </button>
+                        </div>
                     </div>
-                    <div *ngIf="url.invalid && (url.dirty || url.touched)" style="color: red;">
-                        <small *ngIf="url.errors?.required">
-                            URL is required.
-                        </small>
-                    </div>
-                    <small>Your portfolio will be publically visible at above URL</small>
+                    <br>
+                    <form [formGroup]="imageUpload" (ngSubmit)="submit()" class="row">
+                        <app-file-upload formControlName="image" [progress]="progress" class="col-9"></app-file-upload>
+                        <div class="col-3">
+                            <button  type="submit" class="btn btn-primary mb-2">
+                                <span *ngIf="imageLoading" class="spinner-border spinner-border-sm mr-1"></span>Upload
+                            </button>
+                        </div>
+                    </form>
                 </div>
-                <div class="col-sm-3">
-                    <button  [disabled]="loading" class="btn btn-primary mb-2" (click)='updateUrl()'>
-                        <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>Update Url
-                    </button>
+                <div class="col-3" *ngIf='profileImage'>
+                    <img *ngIf='!imageLoading' [src]='profileImage' class="img-thumbnail" alt="...">
                 </div>
             </div>
-            <div class="form-group row selectsections">
+
+            <div class="row selectsections">
               <div class="col-sm-6">
                     <h4>Your portfolio structure</h4><br>
                     <div class="card">
@@ -54,7 +71,7 @@
                 </div>
               </div>
             </div>
-          </form>
+          
     </div>
     <div class="col-8 offset-2 text-center m-3">
         <button [disabled]="loading" type="button" class="btn btn-primary" (click)="updatePortfolio()">

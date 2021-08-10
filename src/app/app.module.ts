@@ -22,11 +22,12 @@ import { ProjectsComponent } from './components/edit-portfolio/projects/projects
 import { BuildPortfolioService } from './services/build-portfolio.service';
 import { ServicesComponent } from './components/edit-portfolio/services/services.component';
 import { ContactComponent } from './components/edit-portfolio/contact/contact.component';
-import { Portfolio1Component } from './components/portfolio1/portfolio1.component';
 import { DashboardHomeComponent } from './components/dashboard-home/dashboard-home.component';
 import { ContactCardComponent } from './components/contact-card/contact-card.component';
 import { ToastsContainerComponent } from './components/toasts-container/toasts-container.component';
 import { UserSettingsComponent } from './components/user-settings/user-settings.component';
+import { FileUploadComponent } from './components/edit-portfolio/file-upload/file-upload.component';
+import { EditContactComponent } from './components/edit-contact/edit-contact.component';
 
 @NgModule({
   declarations: [
@@ -42,11 +43,12 @@ import { UserSettingsComponent } from './components/user-settings/user-settings.
     ProjectsComponent,
     ServicesComponent,
     ContactComponent,
-    Portfolio1Component,
     DashboardHomeComponent,
     ContactCardComponent,
     ToastsContainerComponent,
-    UserSettingsComponent
+    UserSettingsComponent,
+    FileUploadComponent,
+    EditContactComponent
   ],
   imports: [
     BrowserModule,

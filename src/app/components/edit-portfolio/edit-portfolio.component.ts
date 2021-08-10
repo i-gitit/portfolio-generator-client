@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { FormControl,Validators } from '@angular/forms';
+import { FormControl,Validators, FormGroup } from '@angular/forms';
 import { ToastService } from '../../services/toast.service';
-
+import { HttpEventType } from '@angular/common/http';
 import { BuildPortfolioService } from '../../services/build-portfolio.service';
 import { AboutComponent } from './about/about.component';
 import { SkillsComponent } from './skills/skills.component';
@@ -27,7 +27,12 @@ export class EditPortfolioComponent implements OnInit {
     "Contact":false
   }
   url = new FormControl('',Validators.required);
-
+  imageUpload = new FormGroup({
+    image: new FormControl(null, [Validators.required])
+  });
+  profileImage!: string
+  imageLoading:boolean = false
+  progress = 0;
   loading:boolean= false;
   sectionKeys = [ "About",
                   "Skills",
@@ -47,11 +52,16 @@ export class EditPortfolioComponent implements OnInit {
     });
     this.bp.url.subscribe((url)=>{
       this.url.setValue(url);
-    })
+    });
+    this.bp.profileImage.subscribe((image)=>{
+      console.log("image : ",image);
+      this.profileImage = image;
+      this.imageLoading=true;
+      this.imageLoading=false;
+    });
   }
 
   updateUrl(){
-    console.log(this.url);
     if(this.url.value == ""){
        return;
     }
@@ -116,6 +126,49 @@ export class EditPortfolioComponent implements OnInit {
     }
     const modalRef = this.modalService.open(reference,{ size: 'lg', scrollable: true });
     modalRef.componentInstance.name = 'World';
+  }
+
+  requiredFileType( type: string ) {
+    return function (control: FormControl) {
+      const file = control.value;
+      if ( file ) {
+        const extension = file.name.split('.')[1].toLowerCase();
+        if ( type.toLowerCase() !== extension.toLowerCase() ) {
+          return {
+            requiredFileType: true
+          };
+        }
+        return null;
+      }
+      return null;
+    };
+  }
+
+  submit() {
+    console.log(this.toFormData(this.imageUpload.value));
+    this.imageLoading=true;
+    this.bp.uploadImage(this.toFormData(this.imageUpload.value))
+    .subscribe((success)=>{
+      this.imageLoading=false;
+      this.toastService.show('Profile Image successfully updated', { classname: 'bg-success text-light', delay: 5000 });
+    },
+    (error)=>{
+      console.log(error);
+      this.imageLoading=false;
+      this.toastService.show("Profile Image was not updated", { classname: 'bg-danger text-light', delay: 5000 });
+    })
+  }
+
+  toFormData<T>( formValue: T ) {
+    const formData = new FormData();
+    // @ts-ignore
+    for ( const key of Object.keys(formValue) ) {
+      //@ts-ignore
+      const value = formValue[key];
+      formData.append(key, value);
+    }
+  
+    return formData;
   }
 
 }

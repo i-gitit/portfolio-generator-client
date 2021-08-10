@@ -10,18 +10,22 @@ import { Portfolio } from '../models/portfolio';
 })
 export class BuildPortfolioService {
 
-  portfolio: Portfolio | undefined;
+  portfolio!: Portfolio | undefined;
   private sectionsSubject: BehaviorSubject<any>;
   public sections: Observable<any>;
 
   private urlSubject: BehaviorSubject<any>;
   public url: Observable<any>;
+  private profileImageSubject: BehaviorSubject<any>;
+  public profileImage: Observable<any>;
 
   constructor(private http: HttpClient) {
       this.sectionsSubject = new BehaviorSubject({});
       this.sections = this.sectionsSubject.asObservable();
       this.urlSubject = new BehaviorSubject("");
       this.url = this.urlSubject.asObservable();
+      this.profileImageSubject = new BehaviorSubject("");
+      this.profileImage = this.profileImageSubject.asObservable();
    }
 
   getPortfolio(){
@@ -32,6 +36,7 @@ export class BuildPortfolioService {
       this.portfolio = portfolio;
       this.sectionsSubject.next(portfolio.sections);
       this.urlSubject.next(portfolio.url);
+      this.profileImageSubject.next(portfolio.profileImage);
     },
     (error)=>{
       console.log(error);
@@ -79,5 +84,12 @@ export class BuildPortfolioService {
       return success;
   }));
   }
-  
+
+  uploadImage(image : any){
+    return this.http.post(`${environment.apiUrl}/image`,image)
+    .pipe(map((success:any)=> {
+      this.profileImageSubject.next(success.profileImage);
+      return success;
+  }));
+  }
 }

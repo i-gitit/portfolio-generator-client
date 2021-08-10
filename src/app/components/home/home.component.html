@@ -16,9 +16,9 @@
         <li class="nav-item">
           <a class="nav-link" pageScroll [pageScrollDuration]="400" href="#features"><i class="bi bi-app-indicator"></i> Features </a>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link" pageScroll [pageScrollDuration]="400" href="#"><i class="bi bi-person-lines-fill"></i> Contact</a>
-        </li>
+        </li> -->
       </ul>
     </div>
   </nav>
@@ -40,7 +40,7 @@
                     <hr>
                     <form [formGroup]="loginForm" (ngSubmit)="onloginFormSubmit()">
                         <div class="form-group row">
-                            <label for="username" class="col-sm-3 col-form-label">Username</label>
+                            <label for="username" class="col-sm-3 col-form-label">Email</label>
                             <div class="col-sm-9">
                                 <input type="text" class="form-control" id="username" formControlName="email">
                                 <small *ngIf="submitted && loginControls.email.errors && loginControls.email.errors.required" class="text-danger">Email is required</small>
@@ -157,7 +157,7 @@
 
   </div>
 
-<div class="footer-dark fixed-bottom">
+<div class="footer-dark">
     <footer>
         <div class="container">
             <p class="copyright">Portfoliogenerator.tech © 2021</p>

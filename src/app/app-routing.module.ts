@@ -5,10 +5,10 @@ import { AuthGuard} from './helpers/auth.guard';
 import { UserDashboardComponent } from './components/user-dashboard/user-dashboard.component';
 import { PortfolioComponent } from './components/portfolio/portfolio.component';
 import { EditPortfolioComponent } from './components/edit-portfolio/edit-portfolio.component';
-import { Portfolio1Component } from './components/portfolio1/portfolio1.component';
 import { DashboardHomeComponent } from './components/dashboard-home/dashboard-home.component';
 import { ContactCardComponent } from './components/contact-card/contact-card.component';
 import { UserSettingsComponent } from './components/user-settings/user-settings.component';
+import { EditContactComponent } from './components/edit-contact/edit-contact.component';
 
 const routes: Routes = [
   { path: 'home',component: HomeComponent},
@@ -25,11 +25,14 @@ const routes: Routes = [
     {
       path: 'accountsettings', // child route path
       component: UserSettingsComponent, // child route component that the router renders
+    },
+    {
+      path: 'editcontactcard', // child route path
+      component: EditContactComponent, // child route component that the router renders
     }
   ]},
   { path: 'portfolio/:id', component: PortfolioComponent},
   { path: 'contact/:id', component: ContactCardComponent},
-  { path: 'portfolio1', component: Portfolio1Component},
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
 ];
 

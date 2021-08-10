@@ -51,6 +51,7 @@ export class PortfolioComponent implements OnInit {
   getPortfolio(urlToken: string){
     this.vp.getPortfolio(urlToken)
     .subscribe((res:{portfolio:Portfolio,user:any})=>{
+      console.log(res);
       this.portfolio = res.portfolio;
       this.user = res.user;
       this.skillSets = this.splitSkills(this.portfolio['Skills']);

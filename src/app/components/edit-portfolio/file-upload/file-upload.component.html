@@ -1,0 +1,11 @@
+<!-- <div>
+    <span>Choose file</span>
+    <span>{{file ? file.name : 'or drag and drop file here' }}</span>
+    <input class="file-input" type="file">
+</div> -->
+<label for="profileImage" class="col-3">Profile Image</label>
+<div class="custom-file col-8">
+    <input type="file" class="custom-file-input" id="customFile">
+    <label class="custom-file-label" for="customFile">{{ file? file.name : 'Choose file' }}</label>
+</div>
+<!-- <app-progress [progress]="progress"></app-progress> -->

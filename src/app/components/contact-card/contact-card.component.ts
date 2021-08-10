@@ -31,7 +31,6 @@ export class ContactCardComponent implements OnInit {
       this.user = res.user;
     },
     (error)=>{
-      
     })
   }
 
